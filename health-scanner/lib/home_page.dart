@@ -11,7 +11,8 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Mood Monitor',
-          style: TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.bold),
+          style:
+              TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.blueAccent,
         elevation: 0, // Remove elevation
@@ -26,7 +27,8 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0), // Add horizontal padding
+          padding: const EdgeInsets.symmetric(
+              horizontal: 20.0), // Add horizontal padding
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -41,9 +43,11 @@ class HomePage extends StatelessWidget {
               ),
               //Image.asset("", width: 150.0, height: 150.0),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0), // Add horizontal and vertical padding
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 20.0,
+                    vertical: 10.0), // Add horizontal and vertical padding
                 child: Text(
-                  'How are we feeling today? Take a photo of yourself.',
+                  'How are we feeling today? We\'ll detect your emotional expression!',
                   style: TextStyle(fontSize: 21, color: Colors.white),
                   textAlign: TextAlign.center,
                 ),
@@ -51,14 +55,21 @@ class HomePage extends StatelessWidget {
               SizedBox(height: 20), // Add space between text and button
               ElevatedButton.icon(
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ScanPage()));
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => ScanPage()));
                 },
                 icon: Icon(Icons.camera_alt),
-                label: Text('Start', style: TextStyle(fontSize: 20)), // Increase font size for the button text
+                label: Text('Start',
+                    style: TextStyle(
+                        fontSize:
+                            20)), // Increase font size for the button text
                 style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.black, backgroundColor: Colors.white, // Text color
+                  foregroundColor: Colors.black,
+                  backgroundColor: Colors.white, // Text color
                   textStyle: TextStyle(fontSize: 20),
-                  padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20), // Increased padding for the button
+                  padding: EdgeInsets.symmetric(
+                      horizontal: 40,
+                      vertical: 20), // Increased padding for the button
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0),
                   ),
