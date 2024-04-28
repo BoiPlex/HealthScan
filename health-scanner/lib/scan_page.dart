@@ -14,12 +14,11 @@ import 'package:async/async.dart';
 import 'package:http_parser/http_parser.dart';
 
 import 'package:dummy/emotion_pages/happy_page.dart';
-import 'package:dummy/emotion_pages/angry_page.dart';
 import 'package:dummy/emotion_pages/disgust_page.dart';
 import 'package:dummy/emotion_pages/fear_page.dart';
 import 'package:dummy/emotion_pages/neutral_page.dart';
 import 'package:dummy/emotion_pages/sad_page.dart';
-import 'package:dummy/emotion_pages/surprise_page.dart';
+import 'package:dummy/emotion_pages/breather_page.dart';
 
 const emotionURL = "http://127.0.0.1:7000/emotion";
 
@@ -229,7 +228,8 @@ Future<bool> showAlertDialog(
     onPressed: () {
       // returnValue = true;
       Navigator.of(context).pop(true);
-      print(emotion);
+      // print(emotion);
+      // emotion = "";
       if (emotion == "neutral") {
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => NeutralPage()));
@@ -241,13 +241,13 @@ Future<bool> showAlertDialog(
             .push(MaterialPageRoute(builder: (context) => SadPage()));
       } else if (emotion == "angry") {
         Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => AngryPage()));
+            .push(MaterialPageRoute(builder: (context) => BreatherPage()));
       } else if (emotion == "fear") {
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => FearPage()));
       } else if (emotion == "surprise") {
         Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => SurprisePage()));
+            .push(MaterialPageRoute(builder: (context) => BreatherPage()));
       } else if (emotion == "disgust") {
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => DisgustPage()));
