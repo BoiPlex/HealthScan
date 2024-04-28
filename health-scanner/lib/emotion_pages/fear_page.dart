@@ -27,7 +27,6 @@ class _FearPageState extends State<FearPage> {
         backgroundColor: Colors.blue,
         title: Text('Listen to some relaxing sounds to calm yourself.', style: TextStyle(color: Colors.white),),
         elevation: 0,
-        backgroundColor: Colors.lightBlue,
         centerTitle: true,
       ),
       body: Padding(
