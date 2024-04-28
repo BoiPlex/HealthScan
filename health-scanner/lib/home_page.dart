@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(50.0), // Adjust padding as needed
                 child: Image.asset(
-                  'images/mood_monitor_logo.png', // Replace with your image URL
+                  'assets/images/mood_monitor_logo.png', // Replace with your image URL
                   width: 200, // Adjust width as needed
                   height: 200, // Adjust height as needed
                 ),
@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
               //Image.asset("", width: 150.0, height: 150.0),
               Text(
                 'How are we feeling today? Take a photo of yourself.',
-                style: TextStyle(fontSize: 24),
+                style: TextStyle(fontSize: 24, color:Colors.white) ,
               ),
               SizedBox(height: 50),
               ElevatedButton(
