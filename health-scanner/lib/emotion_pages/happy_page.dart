@@ -44,6 +44,7 @@ class _HappyPageState extends State
       appBar: AppBar(
         backgroundColor: Colors.blue,
         title: Text('Capture Emotion'),
+        centerTitle: true,
       ),
       body: Center(
         child: Column(

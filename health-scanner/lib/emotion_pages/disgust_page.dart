@@ -12,8 +12,9 @@ class DisgustPage extends StatelessWidget {
         backgroundColor: Colors.blue[50],
         appBar: AppBar(
           backgroundColor: Colors.blue,
-          title: Text('Emotion Page'),
+          title: Text('Let us get your mind off the little things in life.'),
           elevation: 0,
+          centerTitle: true,
         ),
         body: Center(
           child: Column(
