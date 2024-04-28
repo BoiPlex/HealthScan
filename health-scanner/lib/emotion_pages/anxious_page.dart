@@ -1,70 +1,86 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:camera/camera.dart';
 
-class AnxiousPage extends StatelessWidget {
-  AnxiousPage({super.key});
+bool timeOn = false;
 
+class AnxiousPage extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.blue,
-        appBar: AppBar(
-          title: Text('Emotion Page'),
-          elevation: 0,
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AnxiousLinksPage())
-                  );
-                },
-                child: Text('Capture Emotion'),
-              ),
-            ],
-          ),
-        ));
-  }
+  _AnxiousPageState createState() => _AnxiousPageState();
 }
 
-class AnxiousLinksPage extends StatelessWidget {
-  const AnxiousLinksPage({Key? key}) : super(key: key);
+class _AnxiousPageState extends State<AnxiousPage> {
+  int time = 4;
+  String pre_string = "Breath in for : ";
+  void _startCountDown1() {
+    if(!timeOn) {
+timeOn = true;
+    pre_string = "Breath in for : ";
+    setState((){
+      time = 4;
+    });
+    Timer.periodic(Duration(seconds: 1),(timer){
+      setState((){
+        if(time > 0) {
+            time--;
+        } else {
+          timer.cancel();
+          pre_string = "Hold your breath for: ";
+          time = 5;
+          Timer.periodic(Duration(seconds: 1),(timer2){
+            setState((){
+              if(time > 0) {
+                time--;
+              } else {
+                timer2.cancel();
+                pre_string = "Exhale for: ";
+                time = 6;
+                Timer.periodic(Duration(seconds: 1),(timer3){
+                  setState(() {
+                    if(time > 0) {
+                      time--;
+                    } else {
+                      timeOn = false;
+                      timer3.cancel();
+                    }
+                  });
+                });
+              }
+            });
+          });
+        }
+      });
+    });
+    }
+    
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Anxious Links'),
+        title: Text('Looks like you need a breather. Try this exercise.', style: TextStyle(color: Colors.white),),
+        elevation: 0,
+        backgroundColor: Colors.green,
+        centerTitle: true,
       ),
-      body: ListView(
-        children: <Widget>[
-          ListTile(
-            title: Text('Link 1'),
-            onTap: () {
-              // Link 1
-              _launchURL('https://example.com/link1');
-            },
-          ),
-          ListTile(
-            title: Text('Link 2'),
-            onTap: () {
-              // Link 2
-              _launchURL('https://example.com/link2');
-            },
-          ),
-        ],
-      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text(pre_string + time.toString() + " seconds", style: TextStyle(fontSize: 50),),
+            MaterialButton(
+              onPressed: _startCountDown1,
+              child: Text(
+                'START EXERCISE',
+                style: TextStyle(color: Colors.white)
+              ),
+              color: Colors.green
+            ),
+          ],
+        )
+      )
     );
-  }
-
-  // Function to launch URL
-  void _launchURL(String url) {
-    // Add logic to launch the URL
-    print('Launching URL: $url');
   }
 }
