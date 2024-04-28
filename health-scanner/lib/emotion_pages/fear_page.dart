@@ -12,8 +12,6 @@ class _FearPageState extends State<FearPage> {
   static AudioPlayer player = new AudioPlayer();
   AssetSource alarmAudioPath = new AssetSource("sounds/ocean_noises.mp3");
   bool isPlaying = false;
-  Duration duration = Duration.zero;
-  Duration position = Duration.zero;
 
   @override
   void dispose() {
