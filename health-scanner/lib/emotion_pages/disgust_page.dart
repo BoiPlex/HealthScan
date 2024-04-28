@@ -7,8 +7,9 @@ class DisgustPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.blue[50],
         appBar: AppBar(
+          backgroundColor: Colors.blue,
           title: Text('Emotion Page'),
           elevation: 0,
         ),

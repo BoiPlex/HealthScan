@@ -63,8 +63,9 @@ class _SadPageState extends State<SadPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.blue[50],
       appBar: AppBar(
+        backgroundColor: Colors.blue,
         title: Text('Jokes Page'),
         elevation: 0,
       ),

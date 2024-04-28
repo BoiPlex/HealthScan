@@ -19,8 +19,10 @@ class NeutralPage extends StatelessWidget {
     int randomIndex = Random().nextInt(positiveAffirmations.length);
 
     return Scaffold(
+      backgroundColor: Colors.blue[50],
       appBar: AppBar(
         title: Text('Positive Affirmation'),
+        backgroundColor: Colors.blue,
       ),
       body: Center(
         child: Padding(

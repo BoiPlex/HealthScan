@@ -63,7 +63,9 @@ class _HappyPageState extends State
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue[50],
       appBar: AppBar(
+        backgroundColor: Colors.blue,
         title: Text('Capture Emotion'),
       ),
       body: Center(
