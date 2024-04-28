@@ -1,80 +1,73 @@
-/*
-import 'package:flutter/material.dart';
 import 'dart:async';
 
-class AngryPage extends StatelessWidget {
-  const AngryPage({
-    super.key
-  @override
-  _ButtonState createState() => _AngryPageState();
-  });
+import 'package:flutter/material.dart';
 
+class AngryPage extends StatefulWidget {
   @override
- Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Try this breathing exercise'),
-      ), // AppBar
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget> [
-            Text(
-              '$_counter seconds.',
-              style: TextStyle(
-                fontSize: 48,
-              ), // TextStyle
-            ), // Text
-            RaisedButton(
-              onPressed: () =>_startTimer(),
-              child: Text("Start Exercise"),
-            ), //RaisedButton
-          ], // Widget
-        ), // Column
-      ), // Center
-    ); // Scaffold
-  }
+  _AngryPageState createState() => _AngryPageState();
 }
 
-
-class _AngryPageState extends State<AngryPage> { 
-  int _counter = 6;
-  Timer _timer;
-  String state = "";
-
-  void _startTimer() {
-    state = "Breath in for : ";
-    _counter = 6;
-
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      if(_counter>0) {
-        _counter--;
-      } else {
-        timer.cancel();
-        _counter = 5;
-        state = "Hold your breath for: ";
-        _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-          if(_counter>0) {
-            _counter--;
-          } else {
-            timer.cancel();
-            _counter = 4;
-            state = "Exhale for: ";
-            _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-              if(_counter>0) {
-                _counter--;
+class _AngryPageState extends State<AngryPage> {
+  int time = 4;
+  String pre_string = "Breath in for : ";
+  void _startCountDown1() {
+    pre_string = "Breath in for : ";
+    setState((){
+      time = 4;
+    });
+    Timer.periodic(Duration(seconds: 1),(timer){
+      setState((){
+        if(time > 0) {
+            time--;
+        } else {
+          timer.cancel();
+          pre_string = "Hold your breath for: ";
+          time = 5;
+          Timer.periodic(Duration(seconds: 1),(timer2){
+            setState((){
+              if(time > 0) {
+                time--;
               } else {
-                timer.cancel();
+                timer2.cancel();
+                pre_string = "Exhale for: ";
+                time = 6;
+                Timer.periodic(Duration(seconds: 1),(timer3){
+                  setState(() {
+                    if(time > 0) {
+                      time--;
+                    } else {
+                      timer3.cancel();
+                    }
+                  });
+                });
               }
             });
-          }
-        });
-        _timer.cancel();
-      }
+          });
+        }
+      });
     });
+  }
 
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text(pre_string + time.toString() + " seconds", style: TextStyle(fontSize: 50),),
+            MaterialButton(
+              onPressed: _startCountDown1,
+              child: Text(
+                'START EXERCISE',
+                style: TextStyle(color: Colors.white)
+              ),
+              color: Colors.green
+            ),
+          ],
+        )
+      )
+    );
   }
 }
-*/
-
-
