@@ -1,22 +1,49 @@
-import json
-from deepface import DeepFace
-
 from fastapi import FastAPI
 import uvicorn
 
+from cv2 import VideoCapture, destroyWindow, imshow, imwrite, waitKey
+# from cv2 import *
+
+from typing import Annotated, Any, Dict, AnyStr, List, Union
+
+from deepface import DeepFace
+
 app = FastAPI()
+
+from fastapi.middleware.cors import CORSMiddleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get('/')
 async def root():
-  return {'color': 'blue', 'x': 10}
+  return "Backend running"
 
-@app.get('/test')
-async def test():
-  return {"test": True, "num": None}
+JSONObject = Dict[AnyStr, Any]
+JSONArray = List[Any]
+JSONStructure = Union[JSONArray, JSONObject]
 
-@app.get('/test/{num}')
-async def test(num: int):
-  return {"test": True, "num": num}
+@app.get('/emotion')
+async def emotion():
+  cam_port = 0
+  cam = VideoCapture(cam_port)
+  result, image = cam.read()
+  if result:
+    imshow("Here", image)
+    imwrite("scanned_faces/face.png", image)
+    waitKey(0)
+    destroyWindow("Here")
+  else:
+    print("No image!")
+    return
+
+  features = DeepFace.analyze(img_path="./scanned_faces/face.png", actions=["emotion"])
+  return features[0]
+  
 
 # Match 2 faces
 # result = DeepFace.verify(img1_path="./kpic1.jpg", img2_path="./glasses1.jpg")
@@ -27,11 +54,11 @@ async def test(num: int):
 # db_result = DeepFace.find(img_path="./kpic1.jpg", db_path=)
 
 # Classify face
-features = DeepFace.analyze(img_path="./kpic1.jpg")
-print(json.dumps(features, indent=2))
+# features = DeepFace.analyze(img_path="./kpic1.jpg")
+# print(json.dumps(features, indent=2))
 
 # """
 if __name__ == "__main__":
-  # uvicorn.run(app, host="127.0.0.1", port=7000, reload=True)
+  uvicorn.run("main:app", host="127.0.0.1", port=7000, reload=True)
   pass
 # """

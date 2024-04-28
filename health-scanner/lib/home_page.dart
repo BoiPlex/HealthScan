@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Icon(
-              // ignore: prefer_const_constructors
+                // ignore: prefer_const_constructors
                 Icons.favorite,
                 size: 100,
                 color: Colors.red,
@@ -32,13 +32,17 @@ class HomePage extends StatelessWidget {
               ),
               SizedBox(height: 50),
               ElevatedButton(
-                onPressed: () async {
-                  // add in the function for button pressed to go to scan page
-                  await availableCameras().then((value) => Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => ScanPage(cameras: value))
-                  ));
+                // onPressed: () async {
+                //   // add in the function for button pressed to go to scan page
+                //   await availableCameras().then((value) => Navigator.of(context)
+                //       .push(MaterialPageRoute(
+                //           builder: (context) => ScanPage(cameras: value))));
+                // },
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => ScanPage()));
                 },
-                child: Text('Starting'),
+                child: Text('Start'),
               ),
             ],
           ),
