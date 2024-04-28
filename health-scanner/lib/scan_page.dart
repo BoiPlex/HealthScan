@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
-
 import 'main.dart';
+
+import 'package:dummy/emotion_pages/fear_page.dart';
 
 late List<CameraDescription> _cameras = <CameraDescription>[];
 
@@ -40,7 +41,8 @@ class ScanPage extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ()))
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => FearPage()));
                 },
                 child: Text('Confirm Emotion Placeholder'),
               ),
