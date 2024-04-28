@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
+import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DisgustPage extends StatelessWidget {
   DisgustPage({super.key});
@@ -43,17 +45,26 @@ class DisgustLinksPage extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           ListTile(
-            title: Text('Link 1'),
+            title: Text('Supprot Numbers'),
             onTap: () {
               // Link 1
-              _launchURL('https://example.com/link1');
+              launchUrl(
+                  Uri.parse('https://mentalhealth.ucdavis.edu/i-need-help'));
             },
           ),
           ListTile(
-            title: Text('Link 2'),
+            title: Text('Online Couseling'),
             onTap: () {
               // Link 2
-              _launchURL('https://example.com/link2');
+              launchUrl(Uri.parse('https://shcs.ucdavis.edu/online-visits'));
+            },
+          ),
+          ListTile(
+            title: Text('Mental Health Basics'),
+            onTap: () {
+              // Link 3
+              launchUrl(Uri.parse(
+                  'https://mentalhealth.ucdavis.edu/resources/basics'));
             },
           ),
         ],

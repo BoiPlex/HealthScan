@@ -229,13 +229,13 @@ Future<bool> showAlertDialog(
       // returnValue = true;
       Navigator.of(context).pop(true);
       // print(emotion);
-      emotion = "disgust";
+      // emotion = "disgust";
       if (emotion == "neutral") {
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => NeutralPage()));
       } else if (emotion == "happy") {
-        // Navigator.of(context)
-        //     .push(MaterialPageRoute(builder: (context) => HappyPage()));
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => HappyPage()));
       } else if (emotion == "sad") {
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => SadPage()));
