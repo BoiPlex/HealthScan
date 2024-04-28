@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:camera/camera.dart';
 import 'dart:math';
 
-class NeutralPage extends StatelessWidget {
-  NeutralPage({Key? key}) : super(key: key);
+class SurprisePage extends StatelessWidget {
+  SurprisePage({Key? key}) : super(key: key);
 
   final List<String> positiveAffirmations = [
     "You are capable of amazing things!",
@@ -20,7 +19,7 @@ class NeutralPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Positive Affirmation'),
+        title: Text('SURPRISE'),
       ),
       body: Center(
         child: Padding(
