@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+bool timeOn = false;
+
 class AngryPage extends StatefulWidget {
   @override
   _AngryPageState createState() => _AngryPageState();
@@ -11,6 +13,8 @@ class _AngryPageState extends State<AngryPage> {
   int time = 4;
   String pre_string = "Breath in for : ";
   void _startCountDown1() {
+    if(!timeOn) {
+timeOn = true;
     pre_string = "Breath in for : ";
     setState((){
       time = 4;
@@ -36,6 +40,7 @@ class _AngryPageState extends State<AngryPage> {
                     if(time > 0) {
                       time--;
                     } else {
+                      timeOn = false;
                       timer3.cancel();
                     }
                   });
@@ -46,6 +51,8 @@ class _AngryPageState extends State<AngryPage> {
         }
       });
     });
+    }
+    
   }
 
 
@@ -53,8 +60,9 @@ class _AngryPageState extends State<AngryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Try this exercise to feel better. Repeat as necessary.'),
+        title: Text('Try this exercise to feel better. Repeat if needed.', style: TextStyle(color: Colors.white),),
         elevation: 0,
+        backgroundColor: Colors.green,
         centerTitle: true,
       ),
       body: Center(
