@@ -73,7 +73,7 @@ class ScanPageState extends State<ScanPage> {
               // ignore: prefer_const_constructors
               Icons.camera,
               size: 160,
-              color: Colors.purple,
+              color: Colors.black,
             ),
             SizedBox(height: 40),
             Text(

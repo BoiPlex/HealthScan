@@ -29,10 +29,10 @@ async def emotion():
   cam = VideoCapture(cam_port)
   result, image = cam.read()
   if result:
-    imshow("Here", image)
+    imshow("Your Face", image)
     imwrite("scanned_faces/face.png", image)
     waitKey(0)
-    destroyWindow("Here")
+    destroyWindow("Your Face")
   else:
     print("No image!")
     return
