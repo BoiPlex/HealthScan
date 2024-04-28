@@ -17,17 +17,15 @@ class _SadPageState extends State<SadPage> {
       'answer': "Because they make up everything!"
     },
     {
-      'question': "I told my wife she was drawing her eyebrows too high. She looked surprised.",
+      'question':
+          "I told my wife she was drawing her eyebrows too high. She looked surprised.",
       'answer': ""
     },
     {
       'question': "Why don't skeletons fight each other?",
       'answer': "They don't have the guts."
     },
-    {
-      'question': "What do you call fake spaghetti?",
-      'answer': "An impasta!"
-    },
+    {'question': "What do you call fake spaghetti?", 'answer': "An impasta!"},
     {
       'question': "Why did the tomato turn red?",
       'answer': "Because it saw the salad dressing!"
@@ -66,7 +64,7 @@ class _SadPageState extends State<SadPage> {
       backgroundColor: Colors.blue[50],
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text('Things will get better.'),
+        title: Text('Things will get better... Believe in yourself!'),
         elevation: 0,
       ),
       body: Center(

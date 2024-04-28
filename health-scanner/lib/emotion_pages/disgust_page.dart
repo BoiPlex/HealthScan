@@ -12,7 +12,7 @@ class DisgustPage extends StatelessWidget {
         backgroundColor: Colors.blue[50],
         appBar: AppBar(
           backgroundColor: Colors.blue,
-          title: Text('Emotion Page'),
+          title: Text('Don\t feel disgusted.. Have some resoucres...'),
           elevation: 0,
         ),
         body: Center(
