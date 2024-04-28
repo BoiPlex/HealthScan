@@ -1,17 +1,25 @@
 import 'dart:io';
 import 'dart:convert';
+import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/rendering.dart';
 import 'package:image_picker/image_picker.dart';
 import 'main.dart';
-import 'package:dummy/emotion_pages/fear_page.dart';
 import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:path/path.dart';
 import 'package:async/async.dart';
 import 'package:http_parser/http_parser.dart';
+
+import 'package:dummy/emotion_pages/happy_page.dart';
+import 'package:dummy/emotion_pages/angry_page.dart';
+import 'package:dummy/emotion_pages/disgust_page.dart';
+import 'package:dummy/emotion_pages/fear_page.dart';
+import 'package:dummy/emotion_pages/neutral_page.dart';
+import 'package:dummy/emotion_pages/sad_page.dart';
+import 'package:dummy/emotion_pages/surprise_page.dart';
 
 const emotionURL = "http://127.0.0.1:7000/emotion";
 
@@ -70,7 +78,7 @@ class ScanPageState extends State<ScanPage> {
             ),
             SizedBox(height: 20),
             Text(
-              'Get Ready!',
+              'Get Ready! We\'ll take a photo right away!',
               style: TextStyle(fontSize: 24),
             ),
             SizedBox(height: 50),
@@ -83,13 +91,15 @@ class ScanPageState extends State<ScanPage> {
                     final features =
                         jsonDecode(response.body) as Map<String, dynamic>;
                     var dominantEmotion = features["dominant_emotion"];
-                    if (dominantEmotion == "neutral") {
-                      print("NEUTRAL");
-                    } else if (dominantEmotion == "happy") {
-                      print("HAPPY");
-                    } else {
-                      print("OTHER");
-                    }
+                    var dominantEmotionPerecnt = features["emotion"]
+                            [dominantEmotion]
+                        .toString()
+                        .substring(0, 5);
+                    // print(features);
+                    showAlertDialog(
+                        context,
+                        "We detected that you're $dominantEmotionPerecnt% $dominantEmotion!",
+                        dominantEmotion);
                   } else {
                     print("ERROR");
                   }
@@ -201,6 +211,65 @@ class ScanPageState extends State<ScanPage> {
       */
     );
   }
+}
+
+Future<bool> showAlertDialog(
+    BuildContext context, String message, String emotion) async {
+  // set up the buttons
+  Widget cancelButton = ElevatedButton(
+    child: Text("Cancel"),
+    onPressed: () {
+      // returnValue = false;
+      Navigator.of(context).pop(false);
+    },
+  );
+  Widget continueButton = ElevatedButton(
+    child: Text("Continue"),
+    onPressed: () {
+      // returnValue = true;
+      Navigator.of(context).pop(true);
+      print(emotion);
+      if (emotion == "neutral") {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => NeutralPage()));
+      } else if (emotion == "happy") {
+        // Navigator.of(context)
+        //     .push(MaterialPageRoute(builder: (context) => HappyPage()));
+      } else if (emotion == "sad") {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => SadPage()));
+      } else if (emotion == "angry") {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => AngryPage()));
+      } else if (emotion == "fear") {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => FearPage()));
+      } else if (emotion == "surprise") {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => SurprisePage()));
+      } else if (emotion == "disgust") {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => DisgustPage()));
+      } else {
+        print("Other");
+      }
+    },
+  ); // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: Text("Are you feeling $emotion?"),
+    content: Text(message),
+    actions: [
+      cancelButton,
+      continueButton,
+    ],
+  ); // show the dialog
+  final result = await showDialog<bool?>(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+  return result ?? false;
 }
 
 class DisplayPictureScreen extends StatelessWidget {

@@ -23,10 +23,6 @@ app.add_middleware(
 async def root():
   return "Backend running"
 
-JSONObject = Dict[AnyStr, Any]
-JSONArray = List[Any]
-JSONStructure = Union[JSONArray, JSONObject]
-
 @app.get('/emotion')
 async def emotion():
   cam_port = 0
