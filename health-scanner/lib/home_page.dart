@@ -19,13 +19,14 @@ class HomePage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Icon(
+              /*Icon(
               // ignore: prefer_const_constructors
                 Icons.favorite,
                 size: 100,
                 color: Colors.red,
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 20),*/
+              Image.asset("images/mood_monitor_logo.png", width: 150.0, height: 150.0),
               Text(
                 'Stay Healthy!',
                 style: TextStyle(fontSize: 24),
