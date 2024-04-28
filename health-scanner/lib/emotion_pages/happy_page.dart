@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class HappyPage extends StatefulWidget {
+class HappyPage extends StatelessWidget {
   const HappyPage({Key? key}) : super(key: key);
 
   @override

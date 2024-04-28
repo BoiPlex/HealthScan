@@ -23,6 +23,7 @@ class NeutralPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('You look great!'),
         backgroundColor: Colors.blue,
+        centerTitle: true,
       ),
       body: Center(
         child: Padding(

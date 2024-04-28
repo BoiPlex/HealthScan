@@ -66,6 +66,7 @@ class _SadPageState extends State<SadPage> {
         backgroundColor: Colors.blue,
         title: Text('Things will get better... Believe in yourself!'),
         elevation: 0,
+        centerTitle: true,
       ),
       body: Center(
         child: Column(
