@@ -21,7 +21,7 @@ class NeutralPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.blue[50],
       appBar: AppBar(
-        title: Text('Positive Affirmation'),
+        title: Text('You look great!'),
         backgroundColor: Colors.blue,
       ),
       body: Center(

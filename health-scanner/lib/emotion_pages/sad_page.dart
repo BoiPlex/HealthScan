@@ -66,7 +66,7 @@ class _SadPageState extends State<SadPage> {
       backgroundColor: Colors.blue[50],
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text('Jokes Page'),
+        title: Text('Things will get better.'),
         elevation: 0,
       ),
       body: Center(
