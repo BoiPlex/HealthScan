@@ -22,11 +22,11 @@ class _FearPageState extends State<FearPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.purple[50],
+      backgroundColor: Colors.blue[50],
       appBar: AppBar(
+        backgroundColor: Colors.blue,
         title: Text('Listen to some relaxing sounds to calm yourself.', style: TextStyle(color: Colors.white),),
         elevation: 0,
-        backgroundColor: Colors.lightBlue,
         centerTitle: true,
       ),
       body: Padding(

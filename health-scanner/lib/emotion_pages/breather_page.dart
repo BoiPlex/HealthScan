@@ -57,6 +57,7 @@ class _BreatherPageState extends State<BreatherPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.blue[50],
         appBar: AppBar(
           title: Text(
             'Try this exercise to feel better. Repeat if needed.',

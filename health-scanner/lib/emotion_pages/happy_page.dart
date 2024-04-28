@@ -1,35 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 
-class HappyPage extends StatelessWidget {
-  const HappyPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.blue,
-      appBar: AppBar(
-        title: Text('Emotion Page'),
-        elevation: 0,
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => HappyPage()),
-            );
-          },
-          child: Text('Capture Emotion'),
-        ),
-      ),
-    );
-  }
-}
+class HappyPage extends StatefulWidget {
+  const HappyPage({Key? key}) : super(key: key);
 
   @override
   _HappyPageState createState() => _HappyPageState();
-
+}
 
 class _HappyPageState extends State
 {
@@ -63,7 +40,9 @@ class _HappyPageState extends State
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue[50],
       appBar: AppBar(
+        backgroundColor: Colors.blue,
         title: Text('Capture Emotion'),
       ),
       body: Center(
@@ -88,9 +67,10 @@ class _HappyPageState extends State
                 String detectedEmotion = detectEmotion(image);
 
                 if (detectedEmotion == "happy") {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => DrawingPage()),
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('You seem happy!'),
+                    ),
                   );
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -109,9 +89,7 @@ class _HappyPageState extends State
   }
 
   String detectEmotion(XFile image) {
-    List<String> emotions = ['happy', 'sad'];
+    List<String> emotions = ['happy', 'sad']; 
     return emotions[DateTime.now().millisecondsSinceEpoch % 2];
   }
-  
-  DrawingPage() {}
 }
