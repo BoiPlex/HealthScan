@@ -73,15 +73,16 @@ class ScanPageState extends State<ScanPage> {
             Icon(
               // ignore: prefer_const_constructors
               Icons.camera,
-              size: 200,
+              size: 160,
               color: Colors.purple,
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 40),
             Text(
               'Get Ready! We\'ll take a photo right away!',
-              style: TextStyle(fontSize: 24),
+              style: TextStyle(fontSize: 24, color: Colors.white),
+              textAlign: TextAlign.center,
             ),
-            SizedBox(height: 50),
+            SizedBox(height: 40),
             ElevatedButton(
               onPressed: () async {
                 try {
