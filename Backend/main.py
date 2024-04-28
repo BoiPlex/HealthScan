@@ -1,11 +1,8 @@
 from fastapi import FastAPI
 import uvicorn
-
+import time
 from cv2 import VideoCapture, destroyWindow, imshow, imwrite, waitKey
-# from cv2 import *
-
 from typing import Annotated, Any, Dict, AnyStr, List, Union
-
 from deepface import DeepFace
 
 app = FastAPI()
@@ -29,10 +26,11 @@ async def emotion():
   cam = VideoCapture(cam_port)
   result, image = cam.read()
   if result:
-    imshow("Your Face", image)
+    imshow("Here", image)
     imwrite("scanned_faces/face.png", image)
-    waitKey(0)
-    destroyWindow("Your Face")
+    # time.sleep(5)
+    # waitKey(0)
+    destroyWindow("Here")
   else:
     print("No image!")
     return

@@ -77,7 +77,7 @@ class ScanPageState extends State<ScanPage> {
             ),
             SizedBox(height: 40),
             Text(
-              'Get Ready! We\'ll take a photo right away!',
+              'Get Ready! We\'ll scan your face right away!',
               style: TextStyle(fontSize: 24, color: Colors.white),
               textAlign: TextAlign.center,
             ),
