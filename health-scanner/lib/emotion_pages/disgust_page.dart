@@ -16,15 +16,14 @@ class DisgustPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => DisgustLinksPage())
-                  );
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => DisgustLinksPage()));
                 },
-                child: Text('Capture Emotion'),
+                child: Text('Get Resource Links'),
               ),
             ],
           ),
