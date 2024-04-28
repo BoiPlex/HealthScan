@@ -1,70 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
-
-class NeutralPage extends StatelessWidget {
-  NeutralPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.blue,
-        appBar: AppBar(
-          title: Text('Emotion Page'),
-          elevation: 0,
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => NeutralLinksPage())
-                  );
-                },
-                child: Text('Capture Emotion'),
-              ),
-            ],
-          ),
-        ));
-  }
-}
+import 'dart:math';
 
 class NeutralLinksPage extends StatelessWidget {
-  const NeutralLinksPage({Key? key}) : super(key: key);
+  NeutralLinksPage({Key? key}) : super(key: key);
+
+  final List<String> positiveAffirmations = [
+    "You are capable of amazing things!",
+    "You are loved and appreciated!",
+    "You bring joy to those around you!",
+    "You have the power to overcome any challenge!",
+    "You are making a positive impact in the world!",
+  ];
 
   @override
   Widget build(BuildContext context) {
+    // Generate a random index to select a random affirmation
+    int randomIndex = Random().nextInt(positiveAffirmations.length);
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Neutral Links'),
+        title: Text('Positive Affirmation'),
       ),
-      body: ListView(
-        children: <Widget>[
-          ListTile(
-            title: Text('Link 1'),
-            onTap: () {
-              // Link 1
-              _launchURL('https://example.com/link1');
-            },
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Text(
+            positiveAffirmations[randomIndex],
+            style: TextStyle(fontSize: 20.0),
+            textAlign: TextAlign.center,
           ),
-          ListTile(
-            title: Text('Link 2'),
-            onTap: () {
-              // Link 2
-              _launchURL('https://example.com/link2');
-            },
-          ),
-        ],
+        ),
       ),
     );
-  }
-
-  // Function to launch URL
-  void _launchURL(String url) {
-    // Add logic to launch the URL
-    print('Launching URL: $url');
   }
 }
