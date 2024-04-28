@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.blue,
         appBar: AppBar(
-          title: Text('Health Scanner'),
+          title: Text('Mood Monitor'),
           elevation: 0,
         ),
         body: Center(
@@ -26,9 +26,17 @@ class HomePage extends StatelessWidget {
                 color: Colors.red,
               ),
               SizedBox(height: 20),*/
-              Image.asset("images/mood_monitor_logo.png", width: 150.0, height: 150.0),
+              Padding(
+                padding: EdgeInsets.all(50.0), // Adjust padding as needed
+                child: Image.asset(
+                  'images/mood_monitor_logo.png', // Replace with your image URL
+                  width: 200, // Adjust width as needed
+                  height: 200, // Adjust height as needed
+                ),
+              ),
+              //Image.asset("", width: 150.0, height: 150.0),
               Text(
-                'Stay Healthy!',
+                'How are we feeling today? Take a photo of yourself.',
                 style: TextStyle(fontSize: 24),
               ),
               SizedBox(height: 50),
@@ -39,7 +47,7 @@ class HomePage extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => ScanPage(cameras: value))
                   ));
                 },
-                child: Text('Starting'),
+                child: Text('Take Your Picture'),
               ),
             ],
           ),
