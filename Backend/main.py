@@ -7,6 +7,9 @@ from deepface import DeepFace
 
 app = FastAPI()
 
+cam_port = 0
+cam = VideoCapture(cam_port)
+
 from fastapi.middleware.cors import CORSMiddleware
 app.add_middleware(
     CORSMiddleware,
@@ -22,15 +25,13 @@ async def root():
 
 @app.get('/emotion')
 async def emotion():
-  cam_port = 0
-  cam = VideoCapture(cam_port)
   result, image = cam.read()
   if result:
-    imshow("Here", image)
+    # imshow("Here", image)
     imwrite("scanned_faces/face.png", image)
     # time.sleep(5)
     # waitKey(0)
-    destroyWindow("Here")
+    # destroyWindow("Here")
   else:
     print("No image!")
     return
