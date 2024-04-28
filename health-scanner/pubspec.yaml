@@ -45,7 +45,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  audioplayers: ^6.0.0
 
 
 
@@ -64,6 +64,8 @@ dev_dependencies:
 flutter:
   assets:
     - assets/images/mood_monitor_logo.png
+    - assets/images/ocean.jpg
+    - assets/sounds/ocean_noises.mp3
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

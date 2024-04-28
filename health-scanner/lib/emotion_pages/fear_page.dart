@@ -1,70 +1,62 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:camera/camera.dart';
 
-class FearPage extends StatelessWidget {
-  FearPage({super.key});
+bool timeOn = false;
 
+class FearPage extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.blue,
-        appBar: AppBar(
-          title: Text('Emotion Page'),
-          elevation: 0,
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => FearLinksPage())
-                  );
-                },
-                child: Text('Capture Emotion'),
-              ),
-            ],
-          ),
-        ));
-  }
+  _FearPageState createState() => _FearPageState();
 }
 
-class FearLinksPage extends StatelessWidget {
-  const FearLinksPage({Key? key}) : super(key: key);
+class _FearPageState extends State<FearPage> {
+  static AudioPlayer player = new AudioPlayer();
+  AssetSource alarmAudioPath = new AssetSource("sounds/ocean_noises.mp3");
+  bool isPlaying = false;
+  Duration duration = Duration.zero;
+  Duration position = Duration.zero;
+
+  @override
+  void dispose() {
+    player.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Fear Links'),
-      ),
-      body: ListView(
-        children: <Widget>[
-          ListTile(
-            title: Text('Link 1'),
-            onTap: () {
-              // Link 1
-              _launchURL('https://example.com/link1');
-            },
-          ),
-          ListTile(
-            title: Text('Link 2'),
-            onTap: () {
-              // Link 2
-              _launchURL('https://example.com/link2');
-            },
-          ),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children:[
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.asset(
+                'assets/images/ocean.jpg',
+                width: double.infinity,
+                height: 250,
+                fit: BoxFit.fitHeight,
+              ),
+            ),
+            CircleAvatar(
+              radius: 35,
+              child: IconButton(
+                icon: Icon(
+                  isPlaying ? Icons.pause : Icons.play_arrow,
+                ),
+                iconSize: 50,
+                onPressed: () async{
+                  if(isPlaying) {
+                    await player.pause();
+                  } else {
+                    await player.play(alarmAudioPath);
+                  }
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
-  }
-
-  // Function to launch URL
-  void _launchURL(String url) {
-    // Add logic to launch the URL
-    print('Launching URL: $url');
   }
 }
