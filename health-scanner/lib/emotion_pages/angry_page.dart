@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 
 bool timeOn = false;
 
-class AnxiousPage extends StatefulWidget {
+class AngryPage extends StatefulWidget {
   @override
-  _AnxiousPageState createState() => _AnxiousPageState();
+  _AngryPageState createState() => _AngryPageState();
 }
 
-class _AnxiousPageState extends State<AnxiousPage> {
+class _AngryPageState extends State<AngryPage> {
   int time = 4;
   String pre_string = "Breath in for : ";
   void _startCountDown1() {
@@ -60,7 +60,7 @@ timeOn = true;
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Looks like you need a breather. Try this exercise.', style: TextStyle(color: Colors.white),),
+        title: Text('Try this exercise to feel better. Repeat if needed.', style: TextStyle(color: Colors.white),),
         elevation: 0,
         backgroundColor: Colors.green,
         centerTitle: true,
