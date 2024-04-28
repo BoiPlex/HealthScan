@@ -22,6 +22,13 @@ class _FearPageState extends State<FearPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.purple[50],
+      appBar: AppBar(
+        title: Text('Listen to some relaxing sounds to calm yourself.', style: TextStyle(color: Colors.white),),
+        elevation: 0,
+        backgroundColor: Colors.lightBlue,
+        centerTitle: true,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -36,11 +43,13 @@ class _FearPageState extends State<FearPage> {
                 fit: BoxFit.fitHeight,
               ),
             ),
+            const Text(""), // ghetto padding
             CircleAvatar(
               radius: 35,
               child: IconButton(
                 icon: Icon(
                   isPlaying ? Icons.pause : Icons.play_arrow,
+                  color:Colors.black,
                 ),
                 iconSize: 50,
                 onPressed: () async{
