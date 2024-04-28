@@ -1,76 +1,117 @@
-// import 'package:flutter/material.dart';
-// import 'package:camera/camera.dart';
-// import 'dart:ui';
+import 'package:flutter/material.dart';
+import 'package:camera/camera.dart';
 
-// class HappyPage extends StatefulWidget {
-//   HappyPage({Key? key}) : super(key: key);
+class HappyPage extends StatelessWidget {
+  const HappyPage({super.key});
 
-//   @override
-//   _HappyPageState createState() => _HappyPageState();
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.blue,
+      appBar: AppBar(
+        title: Text('Emotion Page'),
+        elevation: 0,
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HappyPage()),
+            );
+          },
+          child: Text('Capture Emotion'),
+        ),
+      ),
+    );
+  }
+}
+
+  @override
+  _HappyPageState createState() => _HappyPageState();
 
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//         backgroundColor: Colors.blue,
-//         appBar: AppBar(
-//           title: Text('Emotion Page'),
-//           elevation: 0,
-//         ),
-//         body: Center(
-//           child: Column(
-//             mainAxisAlignment: MainAxisAlignment.center,
-//             children: <Widget>[
-              
-//               ElevatedButton(
-//                 onPressed: () {
-//                   Navigator.push(
-//                   context,
-//                   MaterialPageRoute(builder: (context) => HappyLinksPage())
-//                   );
-//                 },
-//                 child: Text('Capture Emotion'),
-//               ),
-//             ],
-//           ),
-//         ));
-//   }
-// }
+class _HappyPageState extends State
+{
+  late CameraController _controller;
+  late Future<void> _initializeControllerFuture;
 
-// class HappyLinksPage extends StatelessWidget {
-//   const HappyLinksPage({Key? key}) : super(key: key);
+  @override
+  void initState() {
+    super.initState();
+    _initializeCamera();
+  }
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Happy Links'),
-//       ),
-//       body: ListView(
-//         children: <Widget>[
-//           ListTile(
-//             title: Text('Link 1'),
-//             onTap: () {
-//               // Link 1
-//               _launchURL('https://example.com/link1');
-//             },
-//           ),
-//           ListTile(
-//             title: Text('Link 2'),
-//             onTap: () {
-//               // Link 2
-//               _launchURL('https://example.com/link2');
-//             },
-//           ),
-//         ],
-//       ),
-//     );
-//   }
+  Future<void> _initializeCamera() async {
+    final cameras = await availableCameras();
+    final firstCamera = cameras.first;
 
-//   // Function to launch URL
-//   void _launchURL(String url) {
-//     // Add logic to launch the URL
-//     print('Launching URL: $url');
-//   }
-// }
+    _controller = CameraController(
+      firstCamera,
+      ResolutionPreset.medium,
+    );
+
+    _initializeControllerFuture = _controller.initialize();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Capture Emotion'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            FutureBuilder<void>(
+              future: _initializeControllerFuture,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  return CameraPreview(_controller);
+                } else {
+                  return CircularProgressIndicator();
+                }
+              },
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () async {
+                final image = await _controller.takePicture();
+
+                String detectedEmotion = detectEmotion(image);
+
+                if (detectedEmotion == "happy") {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => DrawingPage()),
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('You seem $detectedEmotion.'),
+                    ),
+                  );
+                }
+              },
+              child: Text('Capture Emotion'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  String detectEmotion(XFile image) {
+    List<String> emotions = ['happy', 'sad'];
+    return emotions[DateTime.now().millisecondsSinceEpoch % 2];
+  }
+  
+  DrawingPage() {}
+}
