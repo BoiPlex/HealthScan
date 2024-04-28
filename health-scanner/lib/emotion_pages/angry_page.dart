@@ -52,6 +52,11 @@ class _AngryPageState extends State<AngryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Try this exercise to feel better. Repeat as necessary.'),
+        elevation: 0,
+        centerTitle: true,
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
