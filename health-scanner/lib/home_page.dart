@@ -19,13 +19,7 @@ class HomePage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Icon(
-                // ignore: prefer_const_constructors
-                Icons.favorite,
-                size: 100,
-                color: Colors.red,
-              ),
-              SizedBox(height: 20),*/
+              SizedBox(height: 20),
               Padding(
                 padding: EdgeInsets.all(50.0), // Adjust padding as needed
                 child: Image.asset(
