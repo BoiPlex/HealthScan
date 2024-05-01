@@ -1,28 +1,28 @@
-# Health Scan
+# MoodMonitor
 
-Health Scan is a Flutter application designed to recognize people's emotions through facial recognition technology. The app analyzes facial expressions and categorizes them into specific emotions such as happiness, sadness, anger, etc. Based on the detected emotion, Health Scan provides aid and resources to the user to support their mental health and well-being.
+Mood Monitor is a Flutter application designed to recognize people's emotions through facial recognition technology. The app analyzes facial expressions and categorizes them into specific emotions such as happiness, sadness, anger, etc. Based on the detected emotion, Health Scan provides aid and resources to the user to support their mental health and well-being.
 
 ## Features
 
-- **Emotion Recognition**: Health Scan utilizes facial recognition technology to analyze users' facial expressions and determine their current emotional state.
+- **Emotion Recognition**: Mood Monitor utilizes facial recognition technology to analyze users' facial expressions and determine their current emotional state.
 - **Aid and Support**: Based on the detected emotion, the app offers aid and resources tailored to the user's emotional needs.
 - **User-Friendly Interface**: The app features an intuitive and user-friendly interface for easy navigation and interaction.
-- **Real-Time Processing**: Health Scan processes facial expressions in real-time, providing instant feedback to the user.
+- **Real-Time Processing**: Mood Monitor processes facial expressions in real-time, providing instant feedback to the user.
 
 ## Getting Started
 
-To use Health Scan, follow these steps:
+To use Mood Monitor, follow these steps:
 
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/your-username/health-scan.git
+   git clone https://github.com/your-username/mood-monitor.git
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd health-scan
+   cd mood-monitor
    ```
 
 3. Install dependencies:
