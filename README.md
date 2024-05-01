@@ -1,6 +1,6 @@
 # MoodMonitor
 
-Mood Monitor is a Flutter application designed to recognize people's emotions through facial recognition technology. The app analyzes facial expressions and categorizes them into specific emotions such as happiness, sadness, anger, etc. Based on the detected emotion, Health Scan provides aid and resources to the user to support their mental health and well-being.
+Mood Monitor is a Flutter application designed to recognize people's emotions through facial recognition technology. The app analyzes facial expressions and categorizes them into specific emotions such as happiness, sadness, anger, etc. Based on the detected emotion, Mood Monitor provides aid and resources to the user to support their mental health and well-being.
 
 ## Features
 
